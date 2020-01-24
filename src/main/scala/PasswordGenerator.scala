@@ -61,7 +61,6 @@ class PasswordGenerator(var minLength: Int = 8,
     Thread.currentThread.getStackTrace()(2).getMethodName
 
   def upperChars(numTimes: Int): String = {
-
     val upperChars = ('A' to 'Z').toList
     Random.shuffle(upperChars).take(numTimes).mkString
   }

@@ -1,1 +1,1 @@
-Fully functional along with ScalaTest covering `minLength`, `lowerCase`, `upperChars`, `numbers` & `specialChars` `Boolean` options  
+Fully functional along with ScalaTest covering `minLength`, `lowerChars`, `upperChars`, `numbers` & `specialChars` `Boolean` options  
