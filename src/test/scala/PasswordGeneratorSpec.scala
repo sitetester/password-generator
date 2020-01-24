@@ -9,7 +9,7 @@ class PasswordGeneratorSpec extends AnyFlatSpec {
     assert(pass.length == 0)
   }
 
-  "It" should "return upperChars string with length = minLength" in {
+  "It" should "return `upper` string with length = minLength" in {
     val pass =
       new PasswordGenerator(minLength, false, false, false, true).generate()
 
@@ -17,7 +17,7 @@ class PasswordGeneratorSpec extends AnyFlatSpec {
     assert(pass.filter(_.isUpper).length == minLength)
   }
 
-  "It" should "return lowerChars string with length = minLength" in {
+  "It" should "return `lower` string with length = minLength" in {
     val pass =
       new PasswordGenerator(minLength, false, false, true, false).generate()
 
@@ -33,7 +33,7 @@ class PasswordGeneratorSpec extends AnyFlatSpec {
     assert(pass.forall(_.isDigit))
   }
 
-  "It" should "return `specialChars` string with length = minLength" in {
+  "It" should "return `special` string with length = minLength" in {
     val pass =
       new PasswordGenerator(minLength, true, false, false, false).generate()
 
@@ -44,7 +44,7 @@ class PasswordGeneratorSpec extends AnyFlatSpec {
     assert(pass.forall(!_.isDigit))
   }
 
-  "It" should "return `specialChars` & `numbers` string with length = minLength/2" in {
+  "It" should "return `special` & `numbers` string with length = minLength/2" in {
     val pass =
       new PasswordGenerator(minLength, true, true, false, false).generate()
 
@@ -55,7 +55,7 @@ class PasswordGeneratorSpec extends AnyFlatSpec {
     assert(!pass.matches("^[!a-zA-Z]*$"))
   }
 
-  "It" should "return `specialChars`, `numbers` & `lowerChars` string with length = minLength/3" in {
+  "It" should "return `special`, `numbers` & `lower` string with length = minLength/3" in {
     val pass =
       new PasswordGenerator(minLength, true, true, true, false).generate()
 
@@ -66,7 +66,7 @@ class PasswordGeneratorSpec extends AnyFlatSpec {
 
   }
 
-  "It" should "return `specialChars`, `numbers` , `lowerChars` & `upperChars string with length = minLength/4" in {
+  "It" should "return `special`, `numbers` , `lower` & `upper` string with length = minLength/4" in {
     val pass =
       new PasswordGenerator(minLength, true, true, true, true).generate()
 

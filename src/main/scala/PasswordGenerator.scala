@@ -1,10 +1,10 @@
 import scala.util.Random
 
 class PasswordGenerator(var minLength: Int = 8,
-                        var specialChars: Boolean = true,
+                        var special: Boolean = true,
                         var numbers: Boolean = true,
-                        var lowerChars: Boolean = true,
-                        var upperChars: Boolean = true) {
+                        var lower: Boolean = true,
+                        var upper: Boolean = true) {
 
   def generate(): String = {
 
@@ -32,7 +32,7 @@ class PasswordGenerator(var minLength: Int = 8,
     if (numTrueOptions.length % 2 == 0) {
       // e.g minLength = 15
       // 15 - (4 * 3) = 2
-      randStr += lowerChars(
+      randStr += lower(
         minLength - (eachTrueOptionGenerateCount * numTrueOptions.length))
     }
 
@@ -47,12 +47,12 @@ class PasswordGenerator(var minLength: Int = 8,
       })
   }
 
-  def lowerChars(numTimes: Int): String = {
+  def lower(numTimes: Int): String = {
     val lowerChars = ('a' to 'z').toList
     Random.shuffle(lowerChars).take(numTimes).mkString
   }
 
-  def specialChars(numTimes: Int): String = {
+  def special(numTimes: Int): String = {
     val specialChars = "!@#$%^&*()_+=-[]{}\\|';:/?.>,<`~".toList
     Random.shuffle(specialChars).take(numTimes).mkString
   }
@@ -60,7 +60,7 @@ class PasswordGenerator(var minLength: Int = 8,
   def currentMethodName(): String =
     Thread.currentThread.getStackTrace()(2).getMethodName
 
-  def upperChars(numTimes: Int): String = {
+  def upper(numTimes: Int): String = {
     val upperChars = ('A' to 'Z').toList
     Random.shuffle(upperChars).take(numTimes).mkString
   }
