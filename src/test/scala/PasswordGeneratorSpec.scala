@@ -4,38 +4,33 @@ class PasswordGeneratorSpec extends AnyFlatSpec {
   val minLength = 9
 
   "It" should "return empty string, if no option is true" in {
-    val pass =
-      new PasswordGenerator(minLength, false, false, false, false).generate()
+    val pass = new PasswordGenerator(minLength, false, false, false, false).generate()
     assert(pass.length == 0)
   }
 
   "It" should "return `upper` string with length = minLength" in {
-    val pass =
-      new PasswordGenerator(minLength, false, false, false, true).generate()
+    val pass = new PasswordGenerator(minLength, false, false, false, true).generate()
 
     assert(pass.length == minLength)
     assert(pass.filter(_.isUpper).length == minLength)
   }
 
   "It" should "return `lower` string with length = minLength" in {
-    val pass =
-      new PasswordGenerator(minLength, false, false, true, false).generate()
+    val pass = new PasswordGenerator(minLength, false, false, true, false).generate()
 
     assert(pass.length == minLength)
     assert(pass.filter(_.isLower).length == minLength)
   }
 
   "It" should "return `number` string with length = minLength" in {
-    val pass =
-      new PasswordGenerator(minLength, false, true, false, false).generate()
+    val pass = new PasswordGenerator(minLength, false, true, false, false).generate()
 
     assert(pass.length == minLength)
     assert(pass.forall(_.isDigit))
   }
 
   "It" should "return `special` string with length = minLength" in {
-    val pass =
-      new PasswordGenerator(minLength, true, false, false, false).generate()
+    val pass = new PasswordGenerator(minLength, true, false, false, false).generate()
 
     assert(pass.length == minLength)
 
@@ -45,8 +40,7 @@ class PasswordGeneratorSpec extends AnyFlatSpec {
   }
 
   "It" should "return `special` & `numbers` string with length = minLength/2" in {
-    val pass =
-      new PasswordGenerator(minLength, true, true, false, false).generate()
+    val pass = new PasswordGenerator(minLength, true, true, false, false).generate()
 
     assert(pass.length == minLength)
 
@@ -56,8 +50,7 @@ class PasswordGeneratorSpec extends AnyFlatSpec {
   }
 
   "It" should "return `special`, `numbers` & `lower` string with length = minLength/3" in {
-    val pass =
-      new PasswordGenerator(minLength, true, true, true, false).generate()
+    val pass = new PasswordGenerator(minLength, true, true, true, false).generate()
 
     assert(pass.length == minLength)
     assert(pass.filter(_.isDigit).length == 3)

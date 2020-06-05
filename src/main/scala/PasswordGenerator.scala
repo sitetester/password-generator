@@ -23,7 +23,7 @@ class PasswordGenerator(var minLength: Int = 8,
     val pg = new PasswordGenerator()
     numTrueOptions.foreach(t => {
       val method = pg.getClass
-        .getMethod(t._1.toString, eachTrueOptionGenerateCount.getClass)
+        .getMethod(t._1 eachTrueOptionGenerateCount.getClass)
 
       val randChars = method.invoke(pg, eachTrueOptionGenerateCount.toInt)
       randStr += randChars.toString
@@ -32,8 +32,7 @@ class PasswordGenerator(var minLength: Int = 8,
     if (numTrueOptions.length % 2 == 0) {
       // e.g minLength = 15
       // 15 - (4 * 3) = 2
-      randStr += lower(
-        minLength - (eachTrueOptionGenerateCount * numTrueOptions.length))
+      randStr += lower(minLength - (eachTrueOptionGenerateCount * numTrueOptions.length))
     }
 
     Random.shuffle(randStr).mkString
